@@ -31,6 +31,8 @@ interface CountryDrawerProps {
   searchLabel?: string;
   /** The reading direction of the drawer. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode. */
   dir?: Direction;
+  /** Optional BCP 47 locale (or array) to localize country names and search */
+  locale?: string | string[];
   /** Callback fired when a country is selected */
   onChange: (countryCode: string) => void;
   /** Optional callback fired when drawer open/close animation completes */
@@ -41,6 +43,7 @@ function CountryDrawer({
   onChange,
   value,
   countries,
+  locale,
   onAnimationEnd,
   disabled = false,
   children,
@@ -109,6 +112,7 @@ function CountryDrawer({
             onSelect={handleCountrySelect}
             value={value}
             dir={dir}
+            locale={locale}
           />
         </div>
       </DrawerContent>
