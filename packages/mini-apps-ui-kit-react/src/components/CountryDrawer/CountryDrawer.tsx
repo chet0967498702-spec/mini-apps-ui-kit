@@ -31,8 +31,8 @@ interface CountryDrawerProps {
   searchLabel?: string;
   /** The reading direction of the drawer. If omitted, inherits globally from DirectionProvider or assumes LTR (left-to-right) reading mode. */
   dir?: Direction;
-  /** Optional BCP 47 locale (or array) to localize country names and search */
-  locale?: string | string[];
+  /** Optional BCP 47 locale to localize country names and search */
+  locale?: string;
   /** Callback fired when a country is selected */
   onChange: (countryCode: string) => void;
   /** Optional callback fired when drawer open/close animation completes */
@@ -68,6 +68,7 @@ function CountryDrawer({
   const groupedCountries = useCountryGrouping({
     countries: filteredCountries,
     defaultValue,
+    locale,
   });
 
   const handleCountrySelect = (countryCode: CountryCode) => {
